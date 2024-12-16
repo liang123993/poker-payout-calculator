@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard</title>
+    <title>Leaderboard - Poker Payout Calculator</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -12,10 +12,68 @@
             <span>Poker Payout Calculator</span>
         </a>
         <nav class="header_nav">
-            <a href="../leaderboardPage/leaderboardPage.html" class="header_nav_link">Leaderboard</a>
+            <a href="leaderboardPage.html" class="header_nav_link">Leaderboard</a>
             <a href="../payoutPage/payoutPage.html" class="header_nav_link">Payout</a>
             <a href="../gameHistoryPage/gameHistoryPage.html" class="header_nav_link">Game History</a>
         </nav>
     </header>
+
+    <main>
+        <h2 class="content_title">Leaderboard</h2>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ranking</th>
+                        <th>Player Name</th>
+                        <th>Games Played</th>
+                        <th>Net Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table_number">
+                            <div class="ranking_change">
+                                <span class="change_indicator change_up">↑</span>
+                            </div>
+                        </td>
+                        <td class="table_number">1</td>
+                        <td class="table_player_names">Liang Chen</td>
+                        <td class="table_games_played">1</td>
+                        <td>
+                            <span class="profit_display">$500</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_number">
+                            <div class="ranking_change">
+                                <span class="change_indicator change_none">-</span>
+                            </div>
+                        </td>
+                        <td class="table_number">2</td>
+                        <td class="table_player_names">Edwin Li</td>
+                        <td class="table_games_played">1</td>
+                        <td>
+                            <span class="profit_display">$450</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="table_number">
+                            <div class="ranking_change">
+                                <span class="change_indicator change_down">↓</span>
+                            </div>
+                        </td>
+                        <td class="table_number">3</td>
+                        <td class="table_player_names">Elvis Yow</td>
+                        <td class="table_games_played">1</td>
+                        <td>
+                            <span class="profit_display">$0</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>

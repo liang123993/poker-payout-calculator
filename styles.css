@@ -1,4 +1,3 @@
-/* Base theme colors and typography */
 :root {
     --color-background: #000000;
     --color-primary: #EA2831;
@@ -16,7 +15,6 @@ body {
     padding: 0;
 }
 
-/* Header specific styles */
 .header {
     background-color: var(--color-background);
     padding: 15px 20px;
@@ -50,4 +48,85 @@ body {
 
 .header_nav_link:hover {
     opacity: 0.8;
+}
+
+.content_title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px 16px 12px;
+}
+
+.table_container {
+    margin: 12px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: var(--color-surface);
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.table td {
+    padding: 24px 16px;
+    font-size: 14px;
+    border-top: 1px solid var(--color-border);
+}
+
+.table_number {
+    color: var(--color-text-primary);
+}
+
+.table_player_names {
+    color: var(--color-text-primary);
+}
+
+.table_games_played {
+    color: var(--color-text-secondary);
+}
+
+.profit_display {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+.ranking_change {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.change_indicator {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.change_up {
+    color: green; 
+}
+
+.change_down {
+    color: red;  
+}
+
+.change_none {
+    color: grey; 
 }
