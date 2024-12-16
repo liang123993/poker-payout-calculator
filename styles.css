@@ -78,7 +78,7 @@ body {
 }
 
 .table td {
-    padding: 24px 16px;
+    padding: 12px 16px;
     font-size: 14px;
     border-top: 1px solid var(--color-border);
 }
@@ -140,5 +140,31 @@ body {
 
 .change_none {
     color: grey; 
+}
+
+.table_input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    font-size: 14px;
+}
+
+.table_input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.table_input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.table_actions {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid var(--color-border);
 }
 
