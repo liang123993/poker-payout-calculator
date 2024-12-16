@@ -1,36 +1,53 @@
+/* Base theme colors and typography */
+:root {
+    --color-background: #000000;
+    --color-primary: #EA2831;
+    --color-surface: #212121;
+    --color-border: #303030;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #ABABAB;
+}
+
+body {
+    font-family: Inter, "Noto Sans", sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header specific styles */
 .header {
-    background-color: #1a1a1a;
+    background-color: var(--color-background);
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--color-border);
 }
 
-.project-title {
-    color: white;
+.header_title {
+    color: var(--color-text-primary);
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
-}
-
-.nav-buttons {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 1rem;
 }
 
-.nav-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
+.header_nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.header_nav_link {
+    color: var(--color-text-primary);
     text-decoration: none;
     font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
+    font-weight: 500;
 }
 
-.nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.header_nav_link:hover {
+    opacity: 0.8;
 }
