@@ -87,11 +87,11 @@ body {
     color: var(--color-text-primary);
 }
 
-.table_player_names {
+.table_text {
     color: var(--color-text-primary);
 }
 
-.table_games_played {
+.table_secondary {
     color: var(--color-text-secondary);
 }
 
@@ -129,4 +129,15 @@ body {
 
 .change_none {
     color: grey; 
+}
+
+.action_link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.action_link:hover {
+    color: var(--color-text-primary);
 }
