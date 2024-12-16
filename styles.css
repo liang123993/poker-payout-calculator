@@ -107,6 +107,17 @@ body {
     width: 100%;
 }
 
+.action_link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.action_link:hover {
+    color: var(--color-text-primary);
+}
+
 .ranking_change {
     display: flex;
     align-items: center;
@@ -131,13 +142,3 @@ body {
     color: grey; 
 }
 
-.action_link {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.action_link:hover {
-    color: var(--color-text-primary);
-}
