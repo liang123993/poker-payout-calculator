@@ -14,12 +14,13 @@
         <nav class="header_nav">
             <a href="../leaderboardPage/leaderboardPage.html" class="header_nav_link">Leaderboard</a>
             <a href="../payoutPage/payoutPage.html" class="header_nav_link">Payout</a>
-            <a href="../gameHistoryPage/gameHistoryPage.html" class="header_nav_link">Game History</a>
+            <a href="gameHistoryPage.html" class="header_nav_link">Game History</a>
         </nav>
     </header>
 
     <main>
         <h2 class="content_title">Game History</h2>
+        
         <div class="table_container">
             <table class="table">
                 <thead>
@@ -27,25 +28,20 @@
                         <th>Title</th>
                         <th>Date</th>
                         <th>Players</th>
-                        <th>Duration</th>
-                        <th>Total Bankroll</th>
+                        <th>Total Amount</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="table_text">Edwin's house</td>
-                        <td class="table_secondary">12/12/24</td>
-                        <td class="table_secondary">9</td>
-                        <td class="table_secondary">3:00</td>
-                        <td><span class="table_secondary"></span>$950</td>
-                        <td>
-                            <a href="#" class="action_link">View</a>
-                        </td>
-                    </tr>
+                <tbody id="history_table">
+                    <!-- Games will be added here by JavaScript -->
                 </tbody>
             </table>
         </div>
     </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="../firebase-config.js"></script>
+    <script src="gameHistoryPage.js"></script>
 </body>
 </html>
