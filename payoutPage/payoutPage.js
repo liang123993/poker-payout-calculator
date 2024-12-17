@@ -135,6 +135,15 @@ function showCalculationModal(transfers) {
     modal.innerHTML = `
         <div class="modal_content">
             <span class="modal_close">&times;</span>
+            
+            <!-- Add title input -->
+            <div class="modal_title_input">
+                <input type="text" 
+                       placeholder="Enter game title" 
+                       class="game_title_input"
+                       required>
+            </div>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -179,11 +188,20 @@ function showCalculationModal(transfers) {
     // ---------------submit button----------------
     const submitBtn = modal.querySelector('.button_submit');
     submitBtn.onclick = async () => {
+        const titleInput = modal.querySelector('.game_title_input');
+        if (!titleInput.value.trim()) {
+            alert('Please enter a game title');
+            return;
+        }
+
         try {
             const gameData = {
+                title: titleInput.value.trim(),
                 date: firebase.firestore.Timestamp.now(),
-                players: playerData,  // Now using sorted playerData
-                transfers: transfers
+                players: playerData,
+                transfers: transfers,
+                totalAmount: playerData.reduce((sum, player) => sum + Number(player.buyin), 0),
+                playerCount: playerData.length
             };
 
             // Log the data we're about to send
