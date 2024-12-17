@@ -75,8 +75,34 @@ function calculatePayouts() {
     })
     
     // sort the arrays by size
-    winners.sort((a,b) => a.amount > b.amount ? 1:-1);
-    losers.sort((a,b) => a.amount > b.amount ? 1:-1);
+    winners.sort((a,b) => a.amount > b.amount ? -1:1);
+    losers.sort((a,b) => a.amount > b.amount ? -1:1);
+
+    //transfers
+    const transfers = [];
+    let loserIndex = 0;
+    let winnerIndex = 0;
+
+    while (loserIndex < losers.length && winnerIndex < winners.length) {
+        const debtor = losers[loserIndex];
+        const creditor = winners[winnerIndex];
+
+        const transferAmount = Math.min(debtor.amount, creditor.amount);
+        
+        transfers.push({
+            from: debtor.name,
+            to: creditor.name,
+            amount: transferAmount
+        });
+
+        debtor.amount -= transferAmount;
+        creditor.amount -= transferAmount;
+
+        if (debtor.amount === 0) loserIndex++;
+        if (creditor.amount === 0) winnerIndex++;
+    }
+    console.log('Transfers:', transfers);
+    return transfers;
 }
 
 calculateBtn.addEventListener("click", calculatePayouts);
