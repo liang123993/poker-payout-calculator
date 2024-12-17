@@ -3,6 +3,7 @@ const playersTableBody = document.getElementById('players_table');
 const addPlayersBtn = document.querySelector(".button_add");
 const calculateBtn = document.querySelector(".button_calculate");
 
+//------------------------------------add button------------------------------------
 function createNewRow() {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
@@ -55,24 +56,35 @@ addPlayersBtn.addEventListener("click", () => {
 
 playersTableBody.appendChild(createNewRow());
 
-// payout calculation
+// ------------------------------------payout calculation------------------------------------
 function calculatePayouts() {
     const rows = playersTableBody.querySelectorAll('tr');
-
     const losers = []; 
     const winners = [];
+    let totalNet = 0;
 
     // if net > 0, winners.push, is net < 0 losers.push
-    rows.forEach(row => {
+    for (let row of rows) {
         const name = row.querySelector('input[placeholder="Enter name"]').value;
         const net = Number(row.querySelector(".profit_display").textContent);
+        
+        if (!name.trim()) {
+            alert("All players must have names");
+            return;
+        }
+
+        totalNet += net;
 
         if (net < 0) {
             losers.push({name, amount: Math.abs(net)});
         } else if (net > 0) {
             winners.push({name, amount: Math.abs(net)});
         }
-    })
+    }
+    if (Math.abs(totalNet) !== 0) {
+        alert("Error: Total net amount should be zero. Current total: $" + totalNet);
+        return;
+    }
     
     // sort the arrays by size
     winners.sort((a,b) => a.amount > b.amount ? -1:1);
