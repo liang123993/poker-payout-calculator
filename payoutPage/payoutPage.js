@@ -113,8 +113,47 @@ function calculatePayouts() {
         if (debtor.amount === 0) loserIndex++;
         if (creditor.amount === 0) winnerIndex++;
     }
-    console.log('Transfers:', transfers);
+    showCalculationModal(transfers);
     return transfers;
 }
 
 calculateBtn.addEventListener("click", calculatePayouts);
+
+// ------------------------------------transfer results modal------------------------------------
+function showCalculationModal(transfers) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+
+    modal.innerHTML = `
+        <div class="modal_content">
+            <span class="modal_close">&times;</span>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Net Gain/Loss</th>
+                        <th>Payment Details</th>
+                        <th>Actions</th>
+                        <th>Settled?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${transfers.map(transfer => `
+                        <tr>
+                            <td>${transfer.from}</td>
+                            <td>-$${transfer.amount}</td>
+                            <td>Pay ${transfer.to}</td>
+                            <td>${`Pay ${transfer.to} $${transfer.amount}`}</td>
+                            <td><input type="checkbox" class="settled_checkbox"></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+            <button class="button_submit">Submit</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('.modal_close');
+    closeBtn.onclick = () => modal.remove();
+}
