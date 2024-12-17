@@ -123,8 +123,11 @@ function showCalculationModal(transfers) {
         name: row.querySelector('input[placeholder="Enter name"]').value,
         buyin: row.querySelector('input[placeholder="Enter Buy-in"]').value,
         cashout: row.querySelector('input[placeholder="Enter Cashout"]').value,
-        net: row.querySelector('.profit_display').textContent
+        net: Number(row.querySelector('.profit_display').textContent)
     }));
+
+    // Sort players by net amount (highest to lowest)
+    playerData.sort((a, b) => b.net - a.net);
 
     const modal = document.createElement('div');
     modal.className = 'modal';
@@ -135,6 +138,7 @@ function showCalculationModal(transfers) {
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Rank</th>
                         <th>Name</th>
                         <th>Buy-in</th>
                         <th>Cashout</th>
@@ -143,7 +147,7 @@ function showCalculationModal(transfers) {
                     </tr>
                 </thead>
                 <tbody>
-                    ${playerData.map(player => {
+                    ${playerData.map((player, index) => {
                         // Find transfers for this player
                         const playerTransfers = transfers.filter(t => t.from === player.name);
                         const actions = playerTransfers.length > 0 
@@ -152,6 +156,7 @@ function showCalculationModal(transfers) {
                         
                         return `
                             <tr>
+                                <td>${index + 1}</td>
                                 <td>${player.name}</td>
                                 <td>$${player.buyin}</td>
                                 <td>$${player.cashout}</td>
@@ -170,4 +175,30 @@ function showCalculationModal(transfers) {
 
     const closeBtn = modal.querySelector('.modal_close');
     closeBtn.onclick = () => modal.remove();
+    
+    // ---------------submit button----------------
+    const submitBtn = modal.querySelector('.button_submit');
+    submitBtn.onclick = async () => {
+        try {
+            const gameData = {
+                date: firebase.firestore.Timestamp.now(),
+                players: playerData,  // Now using sorted playerData
+                transfers: transfers
+            };
+
+            // Log the data we're about to send
+            console.log('Saving game data:', gameData);
+
+            // Add to Firestore
+            const docRef = await db.collection('games').add(gameData);
+            console.log('Game saved with ID:', docRef.id);
+
+            alert('Game saved successfully!');
+            // Redirect to game history page
+            // window.location.href = '../gameHistoryPage/gameHistoryPage.html';
+        } catch (error) {
+            console.error("Error saving game:", error);
+            alert("Error saving game: " + error.message);
+        }
+    };
 }
