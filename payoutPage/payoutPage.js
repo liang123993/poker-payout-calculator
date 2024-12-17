@@ -121,37 +121,54 @@ calculateBtn.addEventListener("click", calculatePayouts);
 
 // ------------------------------------transfer results modal------------------------------------
 function showCalculationModal(transfers) {
+    const rows = playersTableBody.querySelectorAll('tr');
+    const playerData = Array.from(rows).map(row => ({
+        name: row.querySelector('input[placeholder="Enter name"]').value,
+        buyin: row.querySelector('input[placeholder="Enter Buy-in"]').value,
+        cashout: row.querySelector('input[placeholder="Enter Cashout"]').value,
+        net: row.querySelector('.profit_display').textContent
+    }));
+
     const modal = document.createElement('div');
     modal.className = 'modal';
-
+    
     modal.innerHTML = `
         <div class="modal_content">
             <span class="modal_close">&times;</span>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Player Name</th>
-                        <th>Net Gain/Loss</th>
-                        <th>Payment Details</th>
+                        <th>Name</th>
+                        <th>Buy-in</th>
+                        <th>Cashout</th>
+                        <th>Net</th>
                         <th>Actions</th>
-                        <th>Settled?</th>
                     </tr>
                 </thead>
                 <tbody>
-                    ${transfers.map(transfer => `
-                        <tr>
-                            <td>${transfer.from}</td>
-                            <td>-$${transfer.amount}</td>
-                            <td>Pay ${transfer.to}</td>
-                            <td>${`Pay ${transfer.to} $${transfer.amount}`}</td>
-                            <td><input type="checkbox" class="settled_checkbox"></td>
-                        </tr>
-                    `).join('')}
+                    ${playerData.map(player => {
+                        // Find transfers for this player
+                        const playerTransfers = transfers.filter(t => t.from === player.name);
+                        const actions = playerTransfers.length > 0 
+                            ? playerTransfers.map(t => `Pay ${t.to} $${t.amount}`).join('<br>')
+                            : '-';
+                        
+                        return `
+                            <tr>
+                                <td>${player.name}</td>
+                                <td>$${player.buyin}</td>
+                                <td>$${player.cashout}</td>
+                                <td>$${player.net}</td>
+                                <td>${actions}</td>
+                            </tr>
+                        `;
+                    }).join('')}
                 </tbody>
             </table>
             <button class="button_submit">Submit</button>
         </div>
     `;
+
     document.body.appendChild(modal);
 
     const closeBtn = modal.querySelector('.modal_close');
