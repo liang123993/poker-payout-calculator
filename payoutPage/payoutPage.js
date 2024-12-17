@@ -20,9 +20,6 @@ function createNewRow() {
             <span class="profit_display">$0</span>
         </td>
         <td>
-            <input type="text" class="table_input" placeholder="Payment Details">
-        </td>
-        <td>
             <button class="action_link">Delete</button>
         </td>
     `;
