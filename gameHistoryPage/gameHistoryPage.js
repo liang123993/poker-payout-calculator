@@ -41,6 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //------------------------------view game modal -----------------------------------
+function formatCurrency(amount) {
+    return amount < 0 ? `-$${Math.abs(amount)}` : `$${amount}`;
+}
+
 function viewGame(gameId) {
     db.collection('games').doc(gameId).get().then(doc => {
         if (doc.exists) {
@@ -70,7 +74,7 @@ function viewGame(gameId) {
                                     <td>${player.name}</td>
                                     <td>$${player.buyin}</td>
                                     <td>$${player.cashout}</td>
-                                    <td>$${player.net}</td>
+                                    <td>${formatCurrency(player.net)}</td>
                                 </tr>
                             `).join('')}
                         </tbody>

@@ -117,6 +117,10 @@ function calculatePayouts() {
 calculateBtn.addEventListener("click", calculatePayouts);
 
 // ------------------------------------transfer results modal------------------------------------
+function formatCurrency(amount) {
+    return amount < 0 ? `-$${Math.abs(amount)}` : `$${amount}`;
+}
+
 function showCalculationModal(transfers) {
     const rows = playersTableBody.querySelectorAll('tr');
     const playerData = Array.from(rows).map(row => ({
@@ -157,7 +161,6 @@ function showCalculationModal(transfers) {
                 </thead>
                 <tbody>
                     ${playerData.map((player, index) => {
-                        // Find transfers for this player
                         const playerTransfers = transfers.filter(t => t.from === player.name);
                         const actions = playerTransfers.length > 0 
                             ? playerTransfers.map(t => `Pay ${t.to} $${t.amount}`).join('<br>')
@@ -169,7 +172,7 @@ function showCalculationModal(transfers) {
                                 <td>${player.name}</td>
                                 <td>$${player.buyin}</td>
                                 <td>$${player.cashout}</td>
-                                <td>$${player.net}</td>
+                                <td>${formatCurrency(player.net)}</td>
                                 <td>${actions}</td>
                             </tr>
                         `;
@@ -203,17 +206,11 @@ function showCalculationModal(transfers) {
                 totalAmount: playerData.reduce((sum, player) => sum + Number(player.buyin), 0),
                 playerCount: playerData.length
             };
-
-            // Log the data we're about to send
-            console.log('Saving game data:', gameData);
-
             // Add to Firestore
             const docRef = await db.collection('games').add(gameData);
-            console.log('Game saved with ID:', docRef.id);
 
             alert('Game saved successfully!');
-            // Redirect to game history page
-            // window.location.href = '../gameHistoryPage/gameHistoryPage.html';
+ 
         } catch (error) {
             console.error("Error saving game:", error);
             alert("Error saving game: " + error.message);
