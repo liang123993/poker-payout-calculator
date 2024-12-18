@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard - Poker Payout Calculator</title>
+    <title>Leaderboard</title>
     <link rel="stylesheet" href="../styles.css">
+    <script src="leaderboardPage.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -20,60 +21,27 @@
 
     <main>
         <h2 class="content_title">Leaderboard</h2>
-        <div>
+        
+        <div class="table_container">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Ranking</th>
-                        <th>Player Name</th>
+                        <th>Rank</th>
+                        <th>Player</th>
                         <th>Games Played</th>
-                        <th>Net Total</th>
+                        <th>Total Profit/Loss</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td class="table_number">
-                            <div class="ranking_change">
-                                <span class="change_indicator change_up">↑</span>
-                            </div>
-                        </td>
-                        <td class="table_number">1</td>
-                        <td class="table_player_names">Liang Chen</td>
-                        <td class="table_games_played">1</td>
-                        <td>
-                            <span class="profit_display">$500</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table_number">
-                            <div class="ranking_change">
-                                <span class="change_indicator change_none">-</span>
-                            </div>
-                        </td>
-                        <td class="table_number">2</td>
-                        <td class="table_player_names">jennifer to</td>
-                        <td class="table_games_played">1</td>
-                        <td>
-                            <span class="profit_display">$450</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table_number">
-                            <div class="ranking_change">
-                                <span class="change_indicator change_down">↓</span>
-                            </div>
-                        </td>
-                        <td class="table_text">3</td>
-                        <td class="table_secondary">Elvis Yow</td>
-                        <td class="table_secondary">1</td>
-                        <td>
-                            <span class="profit_display">$0</span>
-                        </td>
-                    </tr>
+                <tbody id="leaderboard_table">
+                    <!-- Data will be added here by JavaScript -->
                 </tbody>
             </table>
         </div>
     </main>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="../firebase-config.js"></script>
 </body>
 </html>
