@@ -20,7 +20,9 @@ function createNewRow() {
             <span class="profit_display">$0</span>
         </td>
         <td>
-            <button class="action_link">Delete</button>
+            <div class="button_container">
+                <button class="action_link">Delete</button>
+            </div>
         </td>
     `;
 
@@ -140,7 +142,6 @@ function showCalculationModal(transfers) {
         <div class="modal_content">
             <span class="modal_close">&times;</span>
             
-            <!-- Add title input -->
             <div class="modal_title_input">
                 <input type="text" 
                        placeholder="Enter game title" 

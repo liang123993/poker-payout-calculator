@@ -75,12 +75,14 @@ body {
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text-primary);
+    text-align: center;
 }
 
 .table td {
     padding: 12px 16px;
     font-size: 14px;
     border-top: 1px solid var(--color-border);
+    text-align: center;
 }
 
 .table_number {
@@ -269,5 +271,10 @@ body {
     margin-bottom: 20px;
     color: var(--color-text-primary);
     font-size: 24px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: center;
 }
 
