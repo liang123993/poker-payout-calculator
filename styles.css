@@ -283,3 +283,15 @@ body {
     justify-content: center;
 }
 
+/* Hide the number input spinners in WebKit browsers (Chrome, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove default styling */
+    margin: 0; /* Remove margin */
+}
+
+/* Hide the number input spinners in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield; /* Change appearance to textfield */
+}
+
