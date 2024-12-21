@@ -7,26 +7,24 @@ const calculateBtn = document.querySelector(".button_calculate");
 function createNewRow() {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-        <td>
+        <td data-label="Player Name">
             <input type="text" class="table_input" placeholder="Enter name">
         </td>
-        <td>
+        <td data-label="Buy-in">
             <input type="number" class="table_input" placeholder="Enter Buy-in">
         </td>
-        <td>
+        <td data-label="Cashout">
             <input type="number" class="table_input" placeholder="Enter Cashout">
         </td>
-        <td>
+        <td data-label="Net">
             <span class="profit_display">$0</span>
         </td>
-        <td>
-            <div class="button_container">
-                <button class="action_link">Delete</button>
-            </div>
+        <td data-label="Actions">
+            <button class="delete-btn">Delete</button>
         </td>
     `;
 
-    const deleteBtn = newRow.querySelector(".action_link");
+    const deleteBtn = newRow.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", () => {
         newRow.remove();
     });
