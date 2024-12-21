@@ -108,6 +108,7 @@ body {
     display: inline-block;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .action_link {
@@ -152,6 +153,7 @@ body {
 
 .table_input {
     width: 100%;
+    box-sizing: border-box;
     padding: 8px 12px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
@@ -294,5 +296,44 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Hide the number input spinners in Firefox */
 input[type="number"] {
     -moz-appearance: textfield; /* Change appearance to textfield */
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 600px) {
+    .modal_content {
+        width: 95%; /* Increase width on smaller screens */
+        margin: 10% auto; /* Adjust margin for better spacing */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .table {
+        font-size: 14px; 
+    }
+
+    .button_submit {
+        width: 100%; 
+        padding: 12px;
+    }
+}
+
+.table th, .table td {
+    padding: 8px; 
+    text-align: center;
+    word-wrap: break-word; /* Allow long words to break to the next line */
+}
+
+.delete-btn {
+    background-color: var(--color-surface); 
+    border: 1px solid var(--color-border);
+    color: white;  
+    border-radius: 5px; 
+    padding: 8px 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+    text-align: center;
+}
+
+.delete-btn:hover {
+    background-color: var(--color-border); /* Darker shade on hover */
 }
 
