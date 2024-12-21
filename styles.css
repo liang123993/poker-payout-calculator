@@ -108,6 +108,7 @@ body {
     display: inline-block;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .action_link {
