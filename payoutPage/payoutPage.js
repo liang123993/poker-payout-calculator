@@ -7,24 +7,24 @@ const calculateBtn = document.querySelector(".button_calculate");
 function createNewRow() {
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
-        <td>
+        <td data-label="Player Name">
             <input type="text" class="table_input" placeholder="Enter name">
         </td>
-        <td>
+        <td data-label="Buy-in">
             <input type="number" class="table_input" placeholder="Enter Buy-in">
         </td>
-        <td>
+        <td data-label="Cashout">
             <input type="number" class="table_input" placeholder="Enter Cashout">
         </td>
-        <td>
+        <td data-label="Net">
             <span class="profit_display">$0</span>
         </td>
-        <td>
-            <button class="action_link">Delete</button>
+        <td data-label="Actions">
+            <button class="delete-btn">Delete</button>
         </td>
     `;
 
-    const deleteBtn = newRow.querySelector(".action_link");
+    const deleteBtn = newRow.querySelector(".delete-btn");
     deleteBtn.addEventListener("click", () => {
         newRow.remove();
     });
@@ -140,7 +140,6 @@ function showCalculationModal(transfers) {
         <div class="modal_content">
             <span class="modal_close">&times;</span>
             
-            <!-- Add title input -->
             <div class="modal_title_input">
                 <input type="text" 
                        placeholder="Enter game title" 

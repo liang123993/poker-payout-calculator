@@ -1,10 +1,10 @@
 :root {
-    --color-background: #000000;
+    --color-background: #171111;
     --color-primary: #EA2831;
-    --color-surface: #212121;
-    --color-border: #303030;
+    --color-surface: #271E1D;
+    --color-border: #4C3E40;
     --color-text-primary: #FFFFFF;
-    --color-text-secondary: #ABABAB;
+    --color-text-secondary: #AEA19F;
 }
 
 body {
@@ -13,6 +13,7 @@ body {
     color: var(--color-text-primary);
     margin: 0;
     padding: 0;
+    font-size: 1em;
 }
 
 .header {
@@ -75,12 +76,14 @@ body {
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text-primary);
+    text-align: center;
 }
 
 .table td {
     padding: 12px 16px;
     font-size: 14px;
     border-top: 1px solid var(--color-border);
+    text-align: center;
 }
 
 .table_number {
@@ -110,8 +113,13 @@ body {
 .action_link {
     color: var(--color-text-secondary);
     text-decoration: none;
-    font-weight: bold;
     font-size: 14px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .action_link:hover {
@@ -159,13 +167,44 @@ body {
 .table_input:focus {
     outline: none;
     border-color: var(--color-primary);
+    transition: 0.35s;
 }
 
 .table_actions {
     display: flex;
-    gap: 12px;
-    padding: 16px;
-    border-top: 1px solid var(--color-border);
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.button_calculate {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button_calculate:hover {
+    background-color: var(--color-border);
+}
+
+.button_add {
+    background-color: var(--color-surface);
+    color: white;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.button_add:hover {
+    background-color: var(--color-border);
 }
 
 .modal {
@@ -238,5 +277,22 @@ body {
     margin-bottom: 20px;
     color: var(--color-text-primary);
     font-size: 24px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Hide the number input spinners in WebKit browsers (Chrome, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove default styling */
+    margin: 0; /* Remove margin */
+}
+
+/* Hide the number input spinners in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield; /* Change appearance to textfield */
 }
 
