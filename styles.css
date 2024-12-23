@@ -337,3 +337,7 @@ input[type="number"] {
     background-color: var(--color-border); /* Darker shade on hover */
 }
 
+.rank-icon {
+    width: 1em;  
+    height: 1em; 
+
