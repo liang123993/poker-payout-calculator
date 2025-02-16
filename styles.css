@@ -1,10 +1,11 @@
 :root {
     --color-background: #171111;
     --color-primary: #EA2831;
-    --color-surface: #271E1D;
+    --color-surface: #311E1D;
     --color-border: #4C3E40;
     --color-text-primary: #FFFFFF;
     --color-text-secondary: #AEA19F;
+    --color-surface-alt: #271E1D;
 }
 
 body {
@@ -340,4 +341,8 @@ input[type="number"] {
 .rank-icon {
     width: 1em;  
     height: 1em; 
+}
 
+.table tbody tr:nth-child(even) {
+    background-color: var(--color-surface-alt);
+}
