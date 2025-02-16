@@ -217,3 +217,15 @@ function showCalculationModal(transfers) {
     };
 }
 
+const runningTotalDisplay = document.getElementById('running_total_display')
+
+function updateRunningTotal() {
+    // initialise total 
+    let total = 0
+
+    // for each, grab the net gain/loss from each
+    document.querySelectorAll('.profit_display').forEach(span => {
+        total += Number(span.textContent)
+    })
+    runningTotalDisplay.textContent = `${total}`
+}
