@@ -229,6 +229,6 @@ function updateRunningTotal() {
     document.querySelectorAll('.profit_display').forEach(span => {
         total += Number(span.textContent)
     })
-    runningTotalDisplay.textContent = `${total}`
+    runningTotalDisplay.textContent = `${total.toFixed(2)}`
 }
 
