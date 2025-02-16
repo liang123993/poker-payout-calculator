@@ -38,7 +38,9 @@ function createNewRow() {
         const buyin = Number(buyinInput.value) || 0;
         const cashout = Number(cashoutInput.value) || 0;
         const net = cashout - buyin;
-        profitDisplay.textContent = `${net}`;
+        profitDisplay.textContent = `${net.toFixed(2)}`;
+
+        updateRunningTotal()
     }
 
     buyinInput.addEventListener("input", updateNet);
@@ -229,3 +231,4 @@ function updateRunningTotal() {
     })
     runningTotalDisplay.textContent = `${total}`
 }
+
