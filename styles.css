@@ -346,3 +346,11 @@ input[type="number"] {
 .table tbody tr:nth-child(even) {
     background-color: var(--color-surface-alt);
 }
+
+.running_total {
+    text-align: right;
+    margin: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+}
